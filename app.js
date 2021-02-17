@@ -15,8 +15,6 @@ const app = express();
 app.use(cors());
 app.use(helmet());
 
-app.use(limiter);
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -24,9 +22,12 @@ mongoose.connect(MONGO_URL, mongoConfig);
 
 app.use(requestLogger);
 
+app.use(limiter);
+
 app.use(router);
 
 app.use(errorLogger);
+
 app.use(errors());
 
 app.use(errorHandler);
