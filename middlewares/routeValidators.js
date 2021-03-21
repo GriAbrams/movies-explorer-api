@@ -44,7 +44,7 @@ const createMovieValidator = celebrate({
     nameRU: Joi.string().required(),
     nameEN: Joi.string().required(),
     thumbnail: Joi.string().required().custom(urlValidator),
-    movieId: Joi.string().required(),
+    movieId: Joi.number().required(),
   }),
 });
 
