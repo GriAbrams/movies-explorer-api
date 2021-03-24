@@ -41,6 +41,9 @@ const updateUser = (req, res, next) => {
       if (err.name === 'CastError') {
         next(new NotFoundError(userNotFound));
       }
+      if (err.code === 11000) {
+        next(new ConflictError(userAlreadyCreated));
+      }
       next(err);
     });
 };
